@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Quiz - Quiz App{% endblock %}
+
+{% block content %}
+    <div class="container text-center mt-5">
+        <h1 class="mb-4" style="font-family: 'Arial', sans-serif; color: #343a40;">Quiz</h1>
+        <form method="POST" class="w-75 mx-auto mt-3 bg-light p-4 rounded shadow-sm">
+            {% for question_id, question_data in questions.items() %}
+                <div class="mb-4">
+                    <p class="fw-bold fs-5 text-start" style="color: #495057;">{{ question_data['question'] }}</p>
+                    <div class="d-grid gap-2">
+                        {% for option in question_data['options'] %}
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="{{ question_id }}" value="{{ option }}" required>
+                                <label class="form-check-label" style="font-size: 1.1rem;">{{ option }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary w-100 mt-4 py-2" style="font-size: 1.2rem;">Submit</button>
+        </form>
+    </div>
+{% endblock %}

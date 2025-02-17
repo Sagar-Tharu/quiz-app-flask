@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Quiz App{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5">
+    <h1>Welcome to the Quiz App</h1>
+    {% if current_user.is_authenticated %}
+        <p class="lead">Hello, {{ current_user.username }}! Ready to test your knowledge?</p>
+        <a href="{{ url_for('quiz') }}" class="btn btn-primary btn-lg">Start Quiz</a>
+    {% else %}
+        <p class="lead">Join us and challenge yourself with fun quizzes!</p>
+        <a href="{{ url_for('register') }}" class="btn btn-success btn-lg">Register Now</a>
+    {% endif %}
+</div>
+
+<!-- Quiz Info Cards -->
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card shadow">
+            <div class="card-body text-center">
+                <h5 class="card-title">Multiple Topics</h5>
+                <p class="card-text">Test your knowledge in various subjects like Math, Science, and History.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow">
+            <div class="card-body text-center">
+                <h5 class="card-title">Track Your Scores</h5>
+                <p class="card-text">See your performance and improve with each attempt.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow">
+            <div class="card-body text-center">
+                <h5 class="card-title">Compete with Friends</h5>
+                <p class="card-text">Challenge your friends and see who scores the highest!</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

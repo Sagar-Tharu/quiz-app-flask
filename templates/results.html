@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Results - Quiz App{% endblock %}
+
+{% block content %}
+    <div class="container text-center mt-5">
+        <h1>Your Results</h1>
+        <ul class="list-group w-50 mx-auto mt-3">
+            {% for score in scores %}
+                <li class="list-group-item">Score: {{ score.score }}/30</li>
+            {% endfor %}
+        </ul>
+        <div class="mt-3">
+            <a href="{{ url_for('quiz') }}" class="btn btn-primary">Take Quiz Again</a>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">Home</a>
+        </div>
+    </div>
+{% endblock %}
